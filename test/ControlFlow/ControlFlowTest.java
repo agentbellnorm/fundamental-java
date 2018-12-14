@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 
@@ -32,6 +32,24 @@ public class ControlFlowTest {
     }
 
     @Test
+    public void classifyPersonByAge() {
+        assertEquals("Infant", controlFlow.classifyPersonByAge(1));
+        assertEquals("Child", controlFlow.classifyPersonByAge(3));
+        assertEquals("Child", controlFlow.classifyPersonByAge(4));
+        assertEquals("Child", controlFlow.classifyPersonByAge(5));
+        assertEquals("Child", controlFlow.classifyPersonByAge(6));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(25));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(26));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(27));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(28));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(29));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(30));
+        assertEquals("Adult", controlFlow.classifyPersonByAge(35));
+        assertEquals("Middle Aged", controlFlow.classifyPersonByAge(50));
+        assertEquals("Senior", controlFlow.classifyPersonByAge(80));
+    }
+
+    @Test
     public void manyLanguagesUsingSwitch() {
         String swedenLanguage = controlFlow.getSpokenLanguageUsingIf("Sweden");
         String norwayLanguage = controlFlow.getSpokenLanguageUsingIf("Norway");
@@ -40,6 +58,7 @@ public class ControlFlowTest {
         String germanyLanguage = controlFlow.getSpokenLanguageUsingIf("Germany");
         String franceLanguage = controlFlow.getSpokenLanguageUsingIf("France");
         String spainLanguage = controlFlow.getSpokenLanguageUsingIf("Spain");
+        String mexicoLanguage = controlFlow.getSpokenLanguageUsingIf("Mexico");
         String unknownCountryLanguage = controlFlow.getSpokenLanguageUsingSwitch(randomString());
 
         assertEquals("Swedish", swedenLanguage);
@@ -49,6 +68,7 @@ public class ControlFlowTest {
         assertEquals("German", germanyLanguage);
         assertEquals("French", franceLanguage);
         assertEquals("Spannish", spainLanguage);
+        assertEquals("Spannish", mexicoLanguage);
         assertEquals("Most likely English", unknownCountryLanguage);
     }
 
